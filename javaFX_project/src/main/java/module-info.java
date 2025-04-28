@@ -1,7 +1,10 @@
-module hellofx {
-    requires transitive javafx.controls;
+module com.exproj.examprog {
+    requires javafx.controls;
     requires javafx.fxml;
- 
-    opens dtu.example.ui to javafx.fxml; // Gives access to fxml files
-    exports dtu.example.ui; // Exports the class inheriting from javafx.application.Application
+
+    requires org.controlsfx.controls;
+    requires org.kordamp.bootstrapfx.core;
+
+    opens com.exproj.examprog to javafx.fxml;
+    exports com.exproj.examprog;
 }
