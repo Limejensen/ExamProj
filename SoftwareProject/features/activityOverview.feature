@@ -1,5 +1,5 @@
 #Feature: Activity Overview
-#As a developer
+#As a user
 #I want to see my assigned tasks
 #So I can manage my workload
 #
