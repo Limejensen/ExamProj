@@ -1,0 +1,38 @@
+package hellocucumber.steps;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import dtu.example.ui.Login;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+
+public class LoginSteps {
+    private Login login = new Login();
+    private String username;
+    
+    @Given("a user is not logged in") 
+    public void aUserIsNotLoggedIn() {
+        assertFalse(login.loggedIn());
+    }
+
+    @Given("a user tries to log in with credentials {string}")
+    public void aUserTriesToLogInWithCredentials(String string) {
+        this.username = string;
+    }
+
+    @Then("the user succesfully logs in")
+    public void theUserSuccesfullyLogsIn() {
+        assertEquals(login.userLoggedIn(username), true);
+    }
+
+    @Then("the user does not logs in")
+    public void theUserDoesNotLogsIn() {
+        assertEquals(login.userLoggedIn(username),false);
+    }
+
+    @Then("the text changes to {string}")
+    public void theTextChangesTo(String string) {
+        assertEquals(login.setText(string),"Not Valid Credentials. Try Again.");
+    }
+}
