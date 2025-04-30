@@ -24,7 +24,7 @@ public class ProjectManagementSteps {
 
     @Then("the system should generate a project number in the format {int}")
     public void TheSystemShouldGenerateAProjectNumberInTheFormat(int integer) {
-        Project project = new Project(projectName);
+        Project project = this.schedule.createProject(projectName);
         this.schedule.addProject(project);
         assertEquals(project.getProjectName(), projectName);
         assertEquals(project.getProjectID(), integer);

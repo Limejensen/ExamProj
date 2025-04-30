@@ -9,7 +9,7 @@ Background:
 
 Scenario: Create a new project
     When the user creates a project named "Time Tracking System"
-    Then the system should generate a project number in the format 25001
+    Then the system should generate a project number in the format 25002
     And I should receive a confirmation message "You added a Project: Time Tracking System"
 
 Scenario: Delete a project

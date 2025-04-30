@@ -1,5 +1,6 @@
 package dtu.example.ui;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 public class Schedule {
@@ -9,6 +10,18 @@ public class Schedule {
     public void addProject(Project project) {
         projects.add(project);
         changeRespondsText("added", project.getProjectName());
+    }
+
+    public Project createProject(String projectName) {
+        int projectID = (Year.now().getValue()-2000)*1000+1;
+
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectID() == projectID) {
+                projectID++;
+            }
+        }
+        Project project = new Project(projectName, projectID);
+        return project;
     }
 
     public ArrayList<Project> getProjects() {
@@ -36,6 +49,7 @@ public class Schedule {
     }
 
     public void changeRespondsText(String string, String projectName) {
+        //you added/removed a project: (the given projectName)
         respondText = "You " + string + " a Project: " + projectName;
     }
 
