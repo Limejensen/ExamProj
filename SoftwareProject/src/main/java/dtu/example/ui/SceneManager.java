@@ -55,7 +55,7 @@ public class SceneManager {
 
     //For now I *might* just end up loading this on launch, but we want to load this and everything else AFTER the login has been passed.
     //Otherwise, how would we know which users data to put in the following screens?
-    //Additionally, all screens should be wiped COMPLETELY if a user logs out for obvious safety reasons.
+    //Additionally, all screens should be wiped COMPLETELY if a user logs out for obvious safety reasons. 50-50
     private void initMainScreen() {
         try {
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));

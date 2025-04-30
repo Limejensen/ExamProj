@@ -3,15 +3,17 @@ As a project leader
 I want to create and delete projects
 So that projects can be effectively managed
 
+Background: 
+    Given the user creates a project named "Project Alpha"
+    Then the system should generate a project number in the format 25001
+
 Scenario: Create a new project
-    Given a user is logged in
     When the user creates a project named "Time Tracking System"
-    Then the system should generate a project number in the format "YYXXX"
-    And I should receive a confirmation message
+    Then the system should generate a project number in the format 25001
+    And I should receive a confirmation message "You added a Project: Time Tracking System"
 
 Scenario: Delete a project
-    Given a user is logged in
     And a project named "Project Alpha" exists
     When I delete project "Project Alpha"
     Then the system should remove the project and all associated data
-    And I should receive a confirmation message
+    And I should receive a confirmation message "You removed a Project: Project Alpha"

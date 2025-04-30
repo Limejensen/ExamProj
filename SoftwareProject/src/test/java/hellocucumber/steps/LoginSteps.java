@@ -21,18 +21,18 @@ public class LoginSteps {
         this.username = string;
     }
 
-    @Then("the user succesfully logs in")
+    @Then("the user succesfully log in")
     public void theUserSuccesfullyLogsIn() {
         assertEquals(login.userLoggedIn(username), true);
     }
 
-    @Then("the user does not logs in")
+    @Then("the user does not log in")
     public void theUserDoesNotLogsIn() {
         assertEquals(login.userLoggedIn(username),false);
     }
 
     @Then("the text changes to {string}")
     public void theTextChangesTo(String string) {
-        assertEquals(login.setText(string),"Not Valid Credentials. Try Again.");
+        assertEquals(login.getText(),string);
     }
 }

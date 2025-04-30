@@ -18,7 +18,11 @@ public class Login {
         return false;
     }
 
-    public String setText(String string) {
+    public void setText(String string) {
+        text = string;
+    }
+
+    public String getText() {
         return text;
     }
 }

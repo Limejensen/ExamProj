@@ -1,45 +1,52 @@
 package hellocucumber.steps;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import dtu.example.ui.Login;
 import dtu.example.ui.Project;
-
+import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProjectManagementSteps {
-    Login login = new Login();
-    Project project = new Project();
+    private Login login = new Login();
+    private Project project;
+    private String projectName;
+    private Schedule schedule = new Schedule();
 
-    @Given("a user is logged in")
-    public void aUserIsLoggedIn() {
-        assertEquals(login.loggedIn(), true);
-    }
-    @Given("a project named {string} exists")
-    public void aProjectNamedExists(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+
     @When("the user creates a project named {string}")
     public void theUserCreatesAProjectNamed(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.projectName = string;
     }
+
+    @Then("the system should generate a project number in the format {int}")
+    public void TheSystemShouldGenerateAProjectNumberInTheFormat(int integer) {
+        Project project = new Project(projectName);
+        this.schedule.addProject(project);
+        assertEquals(project.getProjectName(), projectName);
+        assertEquals(project.getProjectID(), integer);
+    }
+
+    @Then("I should receive a confirmation message {string}")
+    public void iShouldReceiveAConfirmationMessage(String string) {
+        assertEquals(this.schedule.getRespondText(), string);
+    }
+
+    @Given("a project named {string} exists")
+    public void aProjectNamedExists(String string) {
+        assertTrue(this.schedule.projectExists(string));
+    }
+
     @When("I delete project {string}")
     public void iDeleteProject(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(this.schedule.removeProject(string));
     }
+
     @Then("the system should remove the project and all associated data")
     public void theSystemShouldRemoveTheProjectAndAllAssociatedData() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("I should receive a confirmation message")
-    public void iShouldReceiveAConfirmationMessage() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        //gjort ovenfor
     }
 }
