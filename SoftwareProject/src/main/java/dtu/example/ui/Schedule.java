@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public class Schedule {
     private ArrayList<Project> projects = new ArrayList<>();
     private String respondText;
+    private int projectIterator = 1; 
+
+    private boolean idExistsFlag = false;
 
     public void addProject(Project project) {
         projects.add(project);
@@ -13,13 +16,9 @@ public class Schedule {
     }
 
     public Project createProject(String projectName) {
-        int projectID = (Year.now().getValue()-2000)*1000+1;
-
-        for (int i = 0; i < projects.size(); i++) {
-            if (projects.get(i).getProjectID() == projectID) {
-                projectID++;
-            }
-        }
+        int projectID = (Year.now().getValue()-2000)*1000 + projectIterator;
+        projectIterator++;
+        System.out.println(projectIterator);
         Project project = new Project(projectName, projectID);
         return project;
     }
@@ -28,7 +27,7 @@ public class Schedule {
         return projects;
     }
 
-    public boolean projectExists(String string) {
+    public boolean projectExistsName(String string) {
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getProjectName().equals(string)) {
                 return true;

@@ -11,6 +11,9 @@ Scenario: Create a new project
     When the user creates a project named "Time Tracking System"
     Then the system should generate a project number in the format 25002
     And I should receive a confirmation message "You added a Project: Time Tracking System"
+    When the user creates a project named "Project Beta"
+    Then the system should generate a project number in the format 25003
+    And I should receive a confirmation message "You added a Project: Project Beta"
 
 Scenario: Delete a project
     And a project named "Project Alpha" exists

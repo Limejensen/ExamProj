@@ -26,8 +26,8 @@ public class ProjectManagementSteps {
     public void TheSystemShouldGenerateAProjectNumberInTheFormat(int integer) {
         Project project = this.schedule.createProject(projectName);
         this.schedule.addProject(project);
-        assertEquals(project.getProjectName(), projectName);
-        assertEquals(project.getProjectID(), integer);
+        assertEquals(projectName, project.getProjectName());
+        assertEquals(integer, project.getProjectID());
     }
 
     @Then("I should receive a confirmation message {string}")
@@ -37,7 +37,7 @@ public class ProjectManagementSteps {
 
     @Given("a project named {string} exists")
     public void aProjectNamedExists(String string) {
-        assertTrue(this.schedule.projectExists(string));
+        assertTrue(this.schedule.projectExistsName(string));
     }
 
     @When("I delete project {string}")
