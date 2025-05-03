@@ -4,11 +4,23 @@ import java.time.Year;
 import java.util.ArrayList;
 
 public class Schedule {
+    private static Schedule instance;
     private ArrayList<Project> projects = new ArrayList<>();
     private String respondText;
     private int projectIterator = 1; 
 
     private boolean idExistsFlag = false;
+
+    private Schedule() {
+        // private constructor
+    }
+
+    public static Schedule getInstance() {
+        if (instance == null) {
+            instance = new Schedule();
+        }
+        return instance;
+    }
 
     public void addProject(Project project) {
         projects.add(project);
@@ -18,8 +30,8 @@ public class Schedule {
     public Project createProject(String projectName) {
         int projectID = (Year.now().getValue()-2000)*1000 + projectIterator;
         projectIterator++;
-        System.out.println(projectIterator);
         Project project = new Project(projectName, projectID);
+        addProject(project);
         return project;
     }
 
@@ -37,6 +49,7 @@ public class Schedule {
     }
 
     public boolean projectExistsID(int projectID) {
+
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getProjectID() == projectID) {
                 return true;

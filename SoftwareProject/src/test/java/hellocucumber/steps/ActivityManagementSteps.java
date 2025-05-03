@@ -1,19 +1,23 @@
 package hellocucumber.steps;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import dtu.example.ui.Activity;
+import dtu.example.ui.Project;
 import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ActivityManagementSteps {
-    private final Schedule schedule = new Schedule();
+    private Schedule schedule = Schedule.getInstance();
+    private Project project;
+    private Activity activity;
     private String projectName;
 
     @Given("a project with projectID {int} exists")
     public void aProjectWithProjectIDExists(int projectID) {
-        assertEquals(true, schedule.projectExistsID(projectID));
+        assertTrue(schedule.projectExistsID(projectID));
     }
 
     @When("I create a new activity {string} in the project with projectID {string}")

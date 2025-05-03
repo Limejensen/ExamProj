@@ -14,7 +14,7 @@ public class ProjectManagementSteps {
     private Login login = new Login();
     private Project project;
     private String projectName;
-    private Schedule schedule = new Schedule();
+    private Schedule schedule = Schedule.getInstance();
 
 
     @When("the user creates a project named {string}")
@@ -25,7 +25,7 @@ public class ProjectManagementSteps {
     @Then("the system should generate a project number in the format {int}")
     public void TheSystemShouldGenerateAProjectNumberInTheFormat(int integer) {
         Project project = this.schedule.createProject(projectName);
-        this.schedule.addProject(project);
+        //this.schedule.addProject(project);
         assertEquals(projectName, project.getProjectName());
         assertEquals(integer, project.getProjectID());
     }
