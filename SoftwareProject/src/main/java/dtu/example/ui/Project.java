@@ -1,10 +1,12 @@
 package dtu.example.ui;
 
-import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Project {
     private int projectID;
     private String projectName;
+    private ArrayList<Activity> activities =  new ArrayList<>();
 
     public Project(String projectName, int projectID) {
         this.projectName = projectName;
@@ -17,5 +19,13 @@ public class Project {
 
     public int getProjectID() {
         return projectID;
+    }
+
+    public void addActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
     }
 }

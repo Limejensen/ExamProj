@@ -36,6 +36,15 @@ public class Schedule {
         return false;
     }
 
+    public boolean projectExistsID(int projectID) {
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectID() == projectID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean removeProject(String removedProject) {
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getProjectName().equals(removedProject)) {
