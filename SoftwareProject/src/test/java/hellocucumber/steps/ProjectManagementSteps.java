@@ -15,6 +15,7 @@ public class ProjectManagementSteps {
     private Project project;
     private String projectName;
     private Schedule schedule = Schedule.getInstance();
+    private String projectLeaderName;
 
     @Given("there exists no projects")
     public void thereExistsNoProjects() {
@@ -53,5 +54,17 @@ public class ProjectManagementSteps {
     @Then("the system should remove the project and all associated data")
     public void theSystemShouldRemoveTheProjectAndAllAssociatedData() {
         //gjort ovenfor
+    }
+
+    
+    @When("I assign a project leader named {string}")
+    public void iAssignAProjectLeaderNamed(String string) {
+        this.projectLeaderName = string;
+    }
+
+    @Then("The system should assign {string} to the project {string}")
+    public void theSystemShouldAssignToTheProject(String projleadername, String projname) {
+        schedule.findProjectByName(projname).setProjectLeader(projectLeaderName);
+        assertEquals(projleadername, schedule.findProjectByName(projname).getProjectLeader());
     }
 }

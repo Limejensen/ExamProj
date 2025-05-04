@@ -16,8 +16,14 @@ Scenario: Create a new project
     Then the system should generate a project number in the format 25003
     And I should receive a confirmation message "You added a Project: Project Beta"
 
+Scenario: Assign a project leader
+    Given a project named "Project Alpha" exists
+    When I assign a project leader named "huba" 
+    Then The system should assign "huba" to the project "Project Alpha"
+
 Scenario: Delete a project
-    And a project named "Project Alpha" exists
+    Given a project named "Project Alpha" exists
     When I delete project "Project Alpha"
     Then the system should remove the project and all associated data
     And I should receive a confirmation message "You removed a Project: Project Alpha"
+

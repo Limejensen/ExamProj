@@ -66,6 +66,14 @@ public class Schedule {
         return projects.get(0);      
     }
 
+    public Project findProjectByName(String string) {
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectName().equals(string)) {
+                return projects.get(i);
+            }
+        }
+        return projects.get(0);
+    }
     
 
     public boolean removeProject(String removedProject) {
