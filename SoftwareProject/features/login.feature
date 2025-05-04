@@ -6,6 +6,11 @@ Scenario: a user from the list of workers tries to log in
     And a user tries to log in with credentials "huba"
     Then the user succesfully log in
 
+Scenario: a user from the list of workers tries to log in
+    Given a user is not logged in
+    And a user tries to log in with credentials "loni"
+    Then the user succesfully log in
+
 Scenario: a user not in the list of workers tries to log in
     Given a user is not logged in
     And a user tries to log in with credentials "abe"

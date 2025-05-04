@@ -23,11 +23,13 @@ public class LoginSteps {
 
     @Then("the user succesfully log in")
     public void theUserSuccesfullyLogsIn() {
+        login.loadUsers();
         assertEquals(login.userLoggedIn(username), true);
     }
 
     @Then("the user does not log in")
     public void theUserDoesNotLogsIn() {
+        login.loadUsers();
         assertEquals(login.userLoggedIn(username),false);
     }
 
