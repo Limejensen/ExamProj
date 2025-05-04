@@ -9,10 +9,8 @@ public class Schedule {
     private String respondText;
     private int projectIterator = 1; 
 
-    private boolean idExistsFlag = false;
 
-    private Schedule() {
-        // private constructor
+    public Schedule() {
     }
 
     public static Schedule getInstance() {
@@ -31,7 +29,7 @@ public class Schedule {
         int projectID = (Year.now().getValue()-2000)*1000 + projectIterator;
         projectIterator++;
         Project project = new Project(projectName, projectID);
-        addProject(project);
+        //addProject(project);
         return project;
     }
 
@@ -58,6 +56,18 @@ public class Schedule {
         return false;
     }
 
+
+    public Project findProjectByID(int projectID) {
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectID() == projectID) {
+                return projects.get(i);
+            }
+        }
+        return projects.get(0);      
+    }
+
+    
+
     public boolean removeProject(String removedProject) {
         for (int i = 0; i < projects.size(); i++) {
             if (projects.get(i).getProjectName().equals(removedProject)) {
@@ -77,4 +87,10 @@ public class Schedule {
     public String getRespondText() {
         return respondText;
     }
+
+    public void reset() {
+        projects.clear();
+        projectIterator = 1;
+    }
+    
 }

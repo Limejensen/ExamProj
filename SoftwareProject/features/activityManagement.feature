@@ -4,7 +4,8 @@ I want to manage activities within projects
 So that project tasks are clearly defined and organized
 
 Background: 
-    Given the user creates a project named "Project Alpha"
+    Given there exists no projects 
+    And the user creates a project named "Project Alpha"
     Then the system should generate a project number in the format 25001
 
 Scenario: Create a new activity

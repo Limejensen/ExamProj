@@ -9,15 +9,18 @@ public class Activity {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public Activity(String actName) {
+    public Activity(String actName, int budgetHours, LocalDate starDate, LocalDate endDate) {
         this.activityName = actName;
+        this.budgetHours = budgetHours;
+        this.startDate = starDate;
+        this.endDate = endDate;
     }
 
     public void setBudgetHours(int hours) {
         this.budgetHours = hours;
     }
 
-    public void setStarteDate(LocalDate startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 

@@ -1,8 +1,9 @@
 package hellocucumber.steps;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import dtu.example.ui.Activity;
 import dtu.example.ui.Project;
@@ -16,6 +17,13 @@ public class ActivityManagementSteps {
     private Project project;
     private Activity activity;
     private String projectName;
+    private String activityName;
+    private int budgetHours;
+
+
+    public LocalDate mydate(String dateString) {
+        return LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
 
     @Given("a project with projectID {int} exists")
     public void aProjectWithProjectIDExists(int projectID) {
@@ -23,24 +31,31 @@ public class ActivityManagementSteps {
     }
 
     @When("I create a new activity {string} in the project with projectID {string}")
-    public void iCreateANewActivityInTheProjectWithProjectID(String string, String string2) {
-        activity = new Activity(string);
-        project.addActivity(activity);
+    public void iCreateANewActivityInTheProjectWithProjectID(String actName, String string2) {
+        this.activityName = actName;
+        //activity = new Activity(actName);
+        //this.project.addActivity(activity);
     }
 
     @When("set a budget of {int} hours")
-    public void setABudgetOfHours(Integer int1) {
-        activity.setBudgetedHours(hours);
+    public void setABudgetOfHours(int budgetHours) {
+        this.budgetHours = budgetHours;
+        //this.activity.setBudgetedHours(int1);
     }
 
     @When("set the start date to {string} and end date to {string}")
-    public void setTheStartDateToAndEndDateTo(String string, String string2) {
-        activity.setStartDate(LocalDate.parse(string));
-        activity.setEndDate(LocalDate.parse(string2));
+    public void setTheStartDateToAndEndDateTo(String startdate, String endDate) {
+        activity = new Activity(this.activityName, this.budgetHours, mydate(startdate), mydate(endDate));
+        //activity.setStartDate(LocalDate.parse(string));
+        //activity.setEndDate(LocalDate.parse(string2));
     }
     
     @Then("the activity should be added to the project")
     public void theActivityShouldBeAddedToTheProject() {
-        assertTrue(project.getActivities().contains(activity));
+        schedule.findProjectByID(25001).addActivity(activity);
+        assertTrue(schedule.findProjectByID(25001).getActivities().contains(activity));
     }
+
+
+    
 }

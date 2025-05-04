@@ -16,16 +16,21 @@ public class ProjectManagementSteps {
     private String projectName;
     private Schedule schedule = Schedule.getInstance();
 
+    @Given("there exists no projects")
+    public void thereExistsNoProjects() {
+        schedule.reset();
+    }
 
     @When("the user creates a project named {string}")
     public void theUserCreatesAProjectNamed(String string) {
         this.projectName = string;
+        //this.project = this.schedule.createProject(projectName);
     }
 
     @Then("the system should generate a project number in the format {int}")
     public void TheSystemShouldGenerateAProjectNumberInTheFormat(int integer) {
         Project project = this.schedule.createProject(projectName);
-        //this.schedule.addProject(project);
+        this.schedule.addProject(project);
         assertEquals(projectName, project.getProjectName());
         assertEquals(integer, project.getProjectID());
     }
