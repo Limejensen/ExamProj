@@ -9,7 +9,7 @@ public class Activity {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    private Activity(String actName) {
+    public Activity(String actName) {
         this.activityName = actName;
     }
 
