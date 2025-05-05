@@ -49,4 +49,47 @@ public class LoginController {
     public void setLoginStatusLabel(String text) {
         loginStatusLabel.setText(text);
     }
+
+
+    /*
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private Label loginStatusLabel;
+
+    @FXML
+    private Button loginButton;
+
+    private LoginController loginController;
+
+
+    @FXML
+    public void initialize() {
+        loginButton.setOnMouseClicked(this::loginButton);
+        loginController = new LoginController();
+    }
+
+    public void loginButton(MouseEvent click) {
+        try {
+            if (loginController.validate(passwordField.getText())) {
+                SceneManager.getInstance().initPostLogin();
+                SceneManager.getInstance().swapToMainScreen();
+            } else {
+                setLoginStatusLabel("Please Enter VALID Credentials, idiot!!!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    //Uber-giga-redundant but it looks slightly neater which makes me happy and that's very important.
+    public void setLoginStatusLabel(String text) {
+        loginStatusLabel.setText(text);
+    }
+
+     */
 }

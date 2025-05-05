@@ -55,4 +55,87 @@ public class Login {
     public String getText() {
         return text;
     }
+
+
+    /*
+    //Creates a set out of the userlist file. This has O(1) lookup so it should be ideal.
+    private Set<String> users;
+    private final String usersFilepath = "/userdata/userlist.txt"; //Modify this as needed when we create a file for this.
+
+
+    //While one might be tempted to turn this into a singleton as well, remember that it is only created through the LoginScreenController
+    //Since that class is a singleton, this effectively becomes one as well. (Not entirely true, but you get the gist of it)
+    public LoginController() {
+        users = new HashSet<>();
+
+        //Implement the below code once a txt file containing users has been implemented with appropriate rankings and such.
+        //loadUsers();
+    }
+
+    //The rest of the code should be self-explanatory, besides the comment for the createUser-method.
+
+
+    private void loadUsers() {
+        validateUsersfile();
+
+
+
+        try (BufferedReader read = new BufferedReader(new FileReader(usersFilepath))) {
+            String line;
+            while ((line = read.readLine()) != null) {
+                users.add(line.trim());
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to load users");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    //THIS WILL NOT WORK WHEN THE PROGRAM IS TURNED INTO A JAR. REWRITE TO CREATE AN EXTERNAL TXT FILE IN THE JAR FOLDER. (If applicable :3)
+    public boolean createUser(String username) throws Exception {
+        username = username.trim();
+        if (users.contains(username)) {
+            throw new Exception("User already exists.");
+        } else if (username.isEmpty()) {
+            throw new Exception("Username is blank.");
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersFilepath, true))) {
+            bw.write(username);
+            bw.newLine();
+            users.add(username);
+            return true;
+        } catch (IOException e) {
+            System.out.println("Error creating new user.");
+            return false;
+        }
+    }
+
+
+    private void validateUsersfile() {
+        File file = new File(usersFilepath);
+        if (!file.exists()) {
+            try {
+                file.createNewFile(); // Create file if not exists
+            } catch (IOException e) {
+                System.out.println("Unable to create new userdata file.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean validate(String username) {
+        return users.contains(username.trim());
+    }
+     */
+
+
+
+
+
+
+
+
 }
