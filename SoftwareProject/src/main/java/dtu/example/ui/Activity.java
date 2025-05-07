@@ -20,6 +20,10 @@ public class Activity {
         this.budgetHours = hours;
     }
 
+    public int getBudgetHours() {
+        return budgetHours;
+    }
+
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
