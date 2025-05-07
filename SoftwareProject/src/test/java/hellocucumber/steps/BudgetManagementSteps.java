@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import dtu.example.ui.Activity;
-import dtu.example.ui.Login;
 import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,14 +16,12 @@ public class BudgetManagementSteps {
     private Schedule schedule = Schedule.getInstance();
     private Activity activity;
     private ArrayList<Activity> activityArrayList = new ArrayList<>();
-    private Login login = new Login();
 
     private int currentBudgetHours;
     private String activityName;
     private int expectedHourChange;
     
 
-    
     @Given("an activity {string} has a budget of {int} hours")
     public void anActivityHasABudgetOfHours(String activity, Integer hours) {
         this.activityName = activity;

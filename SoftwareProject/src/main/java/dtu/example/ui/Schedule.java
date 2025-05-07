@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Schedule {
     private static Schedule instance;
     private ArrayList<Project> projects = new ArrayList<>();
+
     private String respondText;
     private int projectIterator = 1; 
 
@@ -100,5 +101,7 @@ public class Schedule {
         projects.clear();
         projectIterator = 1;
     }
+
+
     
 }
