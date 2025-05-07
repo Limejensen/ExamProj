@@ -1,2 +1,0 @@
-# ExamProj
-Exam project
