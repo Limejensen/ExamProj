@@ -1,24 +1,30 @@
 package dtu.example.ui;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Login {
-
     //Just establish the user as a singleton
     private boolean loggedInFlag;
 
-
-
-    private ArrayList<String> users =  new ArrayList<>();
-    private String usersDatabase = "src/main/java/dtu/example/ui/db/users.csv";
+    private HashSet<String> users =  new HashSet<>();
+    private final String usersDatabase = "../db/users.csv";
     private String text;
 
+    public void LoginController() {
+        users = new HashSet<>();
+        //Implement the below code once a txt file containing users has been implemented with appropriate rankings and such.
+        //N here - Not quite sure if this needs renaming? If so please go ahead, and perhaps then even delete line 15 (or dont, dont know if it makes a difference.).
+        loadUsers();
+    }
+
     public void loadUsers() {
-        try (Scanner scanner = new Scanner(new File("src/main/java/dtu/example/ui/db/users.csv"))) {
+        try (Scanner scanner = new Scanner(new File(usersDatabase))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 processLine(line);
@@ -34,12 +40,13 @@ public class Login {
         
         if (parts.length >= 2) {
             String username = parts[0].trim();
-            //String password = parts[1].trim();
+            //String password = parts[1].trim(); //Add this if we need passwords for any reason.
             users.add(username);
         }
     }
 
     public boolean loggedIn() {
+        //What is this?
         loggedInFlag = false;
         return loggedInFlag;
     }
@@ -61,28 +68,8 @@ public class Login {
         return text;
     }
 
+    
 
-    /*
-    //Creates a set out of the userlist file. This has O(1) lookup so it should be ideal.
-    private Set<String> users;
-    private final String usersFilepath = "/userdata/userlist.txt"; //Modify this as needed when we create a file for this.
-
-
-    //While one might be tempted to turn this into a singleton as well, remember that it is only created through the LoginScreenController
-    //Since that class is a singleton, this effectively becomes one as well. (Not entirely true, but you get the gist of it)
-    public LoginController() {
-        users = new HashSet<>();
-
-        //Implement the below code once a txt file containing users has been implemented with appropriate rankings and such.
-        //loadUsers();
-    }
-
-    //The rest of the code should be self-explanatory, besides the comment for the createUser-method.
-    */
-
-
-    /*
-    //THIS WILL NOT WORK WHEN THE PROGRAM IS TURNED INTO A JAR. REWRITE TO CREATE AN EXTERNAL TXT FILE IN THE JAR FOLDER. (If applicable :3)
     public boolean createUser(String username) throws Exception {
         username = username.trim();
         if (users.contains(username)) {
@@ -91,7 +78,7 @@ public class Login {
             throw new Exception("Username is blank.");
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersFilepath, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(usersDatabase, true))) {
             bw.write(username);
             bw.newLine();
             users.add(username);
@@ -102,8 +89,8 @@ public class Login {
         }
     }
 
-    */
     private void validateUsersfile() {
+        //When is this ever used?
         File file = new File(usersDatabase);
         if (!file.exists()) {
             try {
