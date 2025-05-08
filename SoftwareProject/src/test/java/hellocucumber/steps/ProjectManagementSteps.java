@@ -57,7 +57,7 @@ public class ProjectManagementSteps {
     }
 
     
-    @When("I assign a project leader named {string}")
+    @When(  "I assign a project leader named {string}")
     public void iAssignAProjectLeaderNamed(String string) {
         this.projectLeaderName = string;
     }

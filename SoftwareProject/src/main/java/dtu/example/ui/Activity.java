@@ -1,6 +1,8 @@
 package dtu.example.ui;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Activity {
     
@@ -8,6 +10,7 @@ public class Activity {
     private int budgetHours;
     private LocalDate startDate;
     private LocalDate endDate;
+    private List<String> assignedDevelopersActivity = new ArrayList<>();
 
     public Activity(String actName, int budgetHours, LocalDate starDate, LocalDate endDate) {
         this.activityName = actName;
@@ -18,6 +21,10 @@ public class Activity {
 
     public void setBudgetHours(int hours) {
         this.budgetHours = hours;
+    }
+
+    public int getBudgetHours() {
+        return budgetHours;
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -33,6 +40,16 @@ public class Activity {
     }
     public LocalDate getStartDate() {
         return startDate;
+    }
+
+    public void assignDeveloper(String developerName) {
+        if (!assignedDevelopersActivity.contains(developerName)) {
+            assignedDevelopersActivity.add(developerName);
+        }
+    }
+
+    public List<String> getDevelopersAssignedToActivity() {
+        return assignedDevelopersActivity;
     }
 
     

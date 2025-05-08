@@ -18,6 +18,7 @@ public class ActivityManagementSteps {
     private Activity activity;
     private String projectName;
     private String activityName;
+    private int projectID;
     private int budgetHours;
 
 
@@ -30,9 +31,10 @@ public class ActivityManagementSteps {
         assertTrue(schedule.projectExistsID(projectID));
     }
 
-    @When("I create a new activity {string} in the project with projectID {string}")
-    public void iCreateANewActivityInTheProjectWithProjectID(String actName, String string2) {
+    @When("I create a new activity {string} in the project with projectID {int}")
+    public void iCreateANewActivityInTheProjectWithProjectID(String actName, int string2) {
         this.activityName = actName;
+        this.projectID = string2;
         //activity = new Activity(actName);
         //this.project.addActivity(activity);
     }
@@ -52,8 +54,8 @@ public class ActivityManagementSteps {
     
     @Then("the activity should be added to the project")
     public void theActivityShouldBeAddedToTheProject() {
-        schedule.findProjectByID(25001).addActivity(activity);
-        assertTrue(schedule.findProjectByID(25001).getActivities().contains(activity));
+        schedule.findProjectByID(projectID).addActivity(activity);
+        assertTrue(schedule.findProjectByID(projectID).getActivities().contains(activity));
     }
 
 
