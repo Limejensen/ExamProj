@@ -54,7 +54,6 @@ public class Activity {
         }
     }
 
-
     public List<String> getDevelopersAssignedToActivity() {
         return assignedDevelopersActivity;
     }

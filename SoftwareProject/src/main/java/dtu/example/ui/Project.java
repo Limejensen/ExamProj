@@ -11,6 +11,8 @@ public class Project {
     private ArrayList<Activity> activities =  new ArrayList<>();
     private String projectLeaderName;
     Map<String, Integer> developerActivityHashmap; 
+    private Schedule schedule = Schedule.getInstance();
+    //private Schedule schedule = new Schedule();
 
     public Project(String projectName, int projectID) {
         this.projectName = projectName;
@@ -62,5 +64,15 @@ public class Project {
             }
         }
         return developerActivityHashmap;
+    }
+    
+    private Activity findActivityByName(String activtyName) {
+        Activity activtyReturner = null;
+        for (Activity a : schedule.findProjectByID(projectID).getActivities()) {
+            if (a.getName().equals(activtyName)) {
+                activtyReturner = a;
+            }
+        }
+        return activtyReturner;
     }
 }

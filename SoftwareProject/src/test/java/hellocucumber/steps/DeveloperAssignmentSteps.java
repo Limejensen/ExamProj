@@ -41,7 +41,9 @@ public class DeveloperAssignmentSteps {
         for (Activity a : activities) {
             if (a.getName().equals(activityName)) {
                 activityMain = a;
-                activityMain.assignDeveloper(developerName);
+                if (!activityMain.getDevelopersAssignedToActivity().contains(developerName)) {
+                    activityMain.assignDeveloper(developerName);
+                }
             }
         }
     }

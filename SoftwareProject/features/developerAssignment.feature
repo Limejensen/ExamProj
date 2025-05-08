@@ -33,6 +33,7 @@ Scenario: Unassign a developer
     And I assign developer "DEI" to activity "TempActivity"
      When I remove the developer
      Then the system should remove the assignment
+    #var nødt til at gøre det på denne måde 
     #Given developer "DEI" is assigned to activity "TempActivity"
     #When I remove the developer
     #Then the system should remove the assignment

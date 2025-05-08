@@ -17,12 +17,13 @@ Background:
     And set a budget of 80 hours
     And set the start date to "2025-09-01" and end date to "2025-10-14"
     Then the activity should be added to the project
+     And I assign developer "huba" to activity "Requirements Analysis"
 
 Scenario: View tasks in certain project
     When I open activities in "Project Alpha"
     Then it should list "Requirements Analysis" and "Two Requirements Analysis"
 
-#Scenario: View personal activities
-#    Given im logged in as "huba"
-#    And I open my activities
-#    Then It should show activities assigned to me
+Scenario: View personal activities
+    Given im logged in as "huba"
+    And I open my activities
+    Then It should show "Requirements Analysis" 
