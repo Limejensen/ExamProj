@@ -2,12 +2,14 @@ package dtu.example.ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
     private boolean loggedInFlag;
     private ArrayList<String> users =  new ArrayList<>();
+    private String usersDatabase = "src/main/java/dtu/example/ui/db/users.csv";
     private String text;
 
     public void loadUsers() {
@@ -22,7 +24,6 @@ public class Login {
     }
 
     private void processLine(String line) {
-        // Remove quotes and split by comma
         line = line.replace("\"", "");
         String[] parts = line.split(",");
         
@@ -30,7 +31,6 @@ public class Login {
             String username = parts[0].trim();
             //String password = parts[1].trim();
             users.add(username);
-            //users.add(username + "," + password);
         }
     }
 
@@ -73,26 +73,10 @@ public class Login {
     }
 
     //The rest of the code should be self-explanatory, besides the comment for the createUser-method.
+    */
 
 
-    private void loadUsers() {
-        validateUsersfile();
-
-
-
-        try (BufferedReader read = new BufferedReader(new FileReader(usersFilepath))) {
-            String line;
-            while ((line = read.readLine()) != null) {
-                users.add(line.trim());
-            }
-        } catch (IOException e) {
-            System.out.println("Unable to load users");
-            e.printStackTrace();
-        }
-    }
-
-
-
+    /*
     //THIS WILL NOT WORK WHEN THE PROGRAM IS TURNED INTO A JAR. REWRITE TO CREATE AN EXTERNAL TXT FILE IN THE JAR FOLDER. (If applicable :3)
     public boolean createUser(String username) throws Exception {
         username = username.trim();
@@ -113,9 +97,9 @@ public class Login {
         }
     }
 
-
+    */
     private void validateUsersfile() {
-        File file = new File(usersFilepath);
+        File file = new File(usersDatabase);
         if (!file.exists()) {
             try {
                 file.createNewFile(); // Create file if not exists
@@ -125,13 +109,11 @@ public class Login {
             }
         }
     }
+    
 
     public boolean validate(String username) {
         return users.contains(username.trim());
     }
-     */
-
-
 
 
 
