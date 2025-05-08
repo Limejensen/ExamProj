@@ -28,7 +28,11 @@ Scenario: Assign a developer
     When I assign developer "DEI" to activity "TempActivity"
     Then the developer should be assigned
 
-#Scenario: Unassign a developer
-#    Given developer "AHO" is assigned to activity "Testing"
-#    When I remove the developer
-#    Then the system should remove the assignment
+Scenario: Unassign a developer
+    Given I "huba" logged in as a project leader for project 25001
+    And I assign developer "DEI" to activity "TempActivity"
+     When I remove the developer
+     Then the system should remove the assignment
+    #Given developer "DEI" is assigned to activity "TempActivity"
+    #When I remove the developer
+    #Then the system should remove the assignment

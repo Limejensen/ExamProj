@@ -48,6 +48,13 @@ public class Activity {
         }
     }
 
+    public void removeDeveloper(String developerName) {
+        if (assignedDevelopersActivity.contains(developerName)) {
+            assignedDevelopersActivity.remove(developerName);
+        }
+    }
+
+
     public List<String> getDevelopersAssignedToActivity() {
         return assignedDevelopersActivity;
     }

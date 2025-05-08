@@ -51,4 +51,14 @@ public class DeveloperAssignmentSteps {
         // check if developer has been addded
         assertTrue(activityMain.getDevelopersAssignedToActivity().contains(developerName));
     }
+
+    @When("I remove the developer")
+    public void iRemoveTheDeveloper() {
+        activityMain.removeDeveloper(developerName);
+    }
+
+    @Then("the system should remove the assignment")
+    public void theSystemShouldRemoveTheAssignment() {
+        assertTrue(!activityMain.getDevelopersAssignedToActivity().contains(developerName));
+    }
 }
