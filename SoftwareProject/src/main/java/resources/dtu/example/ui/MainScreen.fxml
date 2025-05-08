@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.exproj.examprogram.MainScreenController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.MainScreenController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="298.0" layoutX="302.0" pickOnBounds="true">
-         <image>
-            <Image url="@Images/dogerZ.png" />
-         </image>
-      </ImageView>
       <Text layoutX="113.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu tingest idk" />
       <Text layoutX="65.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;--- Exercise! Lav en logout button" />
    </children>
