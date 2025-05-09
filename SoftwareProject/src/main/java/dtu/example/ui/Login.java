@@ -51,8 +51,9 @@ public class Login {
         return loggedInFlag;
     }
 
-    public boolean userLoggedIn(String username) {
+    public boolean isUserLoggedIn(String username) {
         //Navngivning af metoden her stinker, der menes "Findes brugeren der forsøges at logges ind på"
+        //Renamed to 'isUserLoggedIn' -M
         if (users.contains(username)) {
             return true;
         }

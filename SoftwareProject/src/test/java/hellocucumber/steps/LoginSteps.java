@@ -24,13 +24,13 @@ public class LoginSteps {
     @Then("the user succesfully log in")
     public void theUserSuccesfullyLogsIn() {
         login.loadUsers();
-        assertEquals(login.userLoggedIn(username), true);
+        assertEquals(login.isUserLoggedIn(username), true);
     }
 
     @Then("the user does not log in")
     public void theUserDoesNotLogsIn() {
         login.loadUsers();
-        assertEquals(login.userLoggedIn(username),false);
+        assertEquals(login.isUserLoggedIn(username),false);
     }
 
     @Then("the text changes to {string}")
