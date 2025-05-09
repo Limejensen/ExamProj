@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.CreateProjectScreen">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.CreateProjectScreenController">
    <children>
       <AnchorPane layoutY="80.0" prefHeight="520.0" prefWidth="1000.0" style="-fx-background-color: SKYBLUE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
