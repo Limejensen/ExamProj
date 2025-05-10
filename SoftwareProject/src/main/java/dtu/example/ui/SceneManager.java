@@ -14,6 +14,13 @@ public class SceneManager {
 
     private Scene loginScene, mainScene;
 
+    //Saving a ref for this so it can be manipulated.
+    private LoginController loginController;
+
+    private MainScreenController mainScreenController;
+
+    private String currentUser = "None";
+
     private SceneManager(Stage stage) {
         this.stage = stage;
         initLoginScreen();
@@ -48,6 +55,7 @@ public class SceneManager {
         try {
             FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
             loginScene = new Scene(loginLoader.load());
+            loginController = loginLoader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,6 +68,8 @@ public class SceneManager {
         try {
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
             mainScene = new Scene(mainLoader.load());
+            mainScreenController = mainLoader.getController();
+            mainScreenController.setUsernameLabel(currentUser);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,11 +79,16 @@ public class SceneManager {
     //This is also why we would want to wipe the scenes once someone logs out, as it otherwise could be bypassed in order to view another users data.
     //(These things might not be needed at all, but i want to mention them regardless)
     public void swapToLoginScreen() {
+        loginController.resetPasswordField();
         stage.setScene(loginScene);
     }
 
     public void swapToMainScreen() {
         stage.setScene(mainScene);
+    }
+
+    public void setCurrentUser(String currentUser) {
+        this.currentUser = currentUser;
     }
 
 }

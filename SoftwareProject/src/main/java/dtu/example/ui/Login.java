@@ -16,6 +16,8 @@ public class Login {
     private final String usersDatabase = "../db/users.csv";
     private String text;
 
+
+    //This is now redundant, should ideally be turned into a method that can refresh the user set in case a new user is created. Maybe we dont implement that idc.
     public void LoginController() {
         users = new HashSet<>();
         //Implement the below code once a txt file containing users has been implemented with appropriate rankings and such.
@@ -91,7 +93,7 @@ public class Login {
     }
 
     private void validateUsersfile() {
-        //When is this ever used?
+        //When is this ever used? M: This would have been used on launch in order to ensure the user file is intact.
         File file = new File(usersDatabase);
         if (!file.exists()) {
             try {
@@ -105,8 +107,7 @@ public class Login {
     
 
     public boolean validate(String username) {
-        return true;
-        //return users.contains(username.trim());
+        return users.contains(username.trim());
     }
 
 

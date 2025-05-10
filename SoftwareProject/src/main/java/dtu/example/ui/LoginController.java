@@ -5,8 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class LoginController {
+
 
     @FXML
     private PasswordField passwordField;
@@ -17,25 +19,31 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    private LoginController loginController;
+    private Login login = new Login();
 
-    Login login = new Login();
+
+
+
 
 
     @FXML
     public void initialize() {
         loginButton.setOnMouseClicked(this::loginButton);
-        loginController = new LoginController();
+        login.loadUsers();
     }
+
 
 
     public void loginButton(MouseEvent click) {
         try {
             if (login.validate(passwordField.getText())) {
-                SceneManager.getInstance().initPostLogin();
-                SceneManager.getInstance().swapToMainScreen();
+                //Need to do it here since scenemanager does not finish constructing until after initLogin has been called, yes this could be fixed but is not really needed.
+                SceneManager sceneManager = SceneManager.getInstance();
+                sceneManager.setCurrentUser(passwordField.getText());
+                sceneManager.initPostLogin();
+                sceneManager.swapToMainScreen();
             } else {
-                setLoginStatusLabel("Please Enter VALID Credentials, idiot!!!");
+                setLoginStatusLabel("Credentials invalid, try again.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,6 +54,11 @@ public class LoginController {
     public void setLoginStatusLabel(String text) {
         loginStatusLabel.setText(text);
     }
+
+    public void resetPasswordField() {
+        passwordField.clear();
+    }
+
 
 
    

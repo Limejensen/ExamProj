@@ -53,7 +53,7 @@ public class Project {
             if (activity.getStartDate().isAfter(searchEndDate) || activity.getEndDate().isBefore(searchEndDate)) {
                 continue;
             }
-            // add devlopers to hashmap
+            // add developers to hashmap
             for (String developer : activity.getDevelopersAssignedToActivity()) {
                 int count = 0;
                 if (developerActivityHashmap.containsKey(developer)) {
