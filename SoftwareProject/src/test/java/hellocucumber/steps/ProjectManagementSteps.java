@@ -3,7 +3,7 @@ package hellocucumber.steps;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import dtu.example.ui.Login;
+import dtu.example.ui.LoginController;
 import dtu.example.ui.Project;
 import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
@@ -11,7 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProjectManagementSteps {
-    private Login login = new Login();
+    private LoginController loginController = new LoginController();
     private Project project;
     private String projectName;
     private Schedule schedule = Schedule.getInstance();

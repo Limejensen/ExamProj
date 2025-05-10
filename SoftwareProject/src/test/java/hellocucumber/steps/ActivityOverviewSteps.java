@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import dtu.example.ui.Activity;
-import dtu.example.ui.Login;
+import dtu.example.ui.LoginController;
 import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,7 +14,7 @@ import io.cucumber.java.en.When;
 public class ActivityOverviewSteps {
 
     private Schedule schedule = Schedule.getInstance();
-    private Login login = new Login();
+    private LoginController loginController = new LoginController();
 
 
     private ArrayList<Activity> savedActivityList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class ActivityOverviewSteps {
     @Given("im logged in as {string}")
     public void imLoggedInAs(String string) {
         this.userName = string;
-        assertEquals(login.isUserLoggedIn(userName), true);
+        assertEquals(loginController.isUserLoggedIn(userName), true);
     }
 
     @When("I open my activities")

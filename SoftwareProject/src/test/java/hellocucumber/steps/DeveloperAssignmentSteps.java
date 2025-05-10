@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import dtu.example.ui.Activity;
-import dtu.example.ui.Login;
+import dtu.example.ui.LoginController;
 import dtu.example.ui.Project;
 import dtu.example.ui.Schedule;
 import io.cucumber.java.en.Given;
@@ -17,7 +17,7 @@ public class DeveloperAssignmentSteps {
     
     private Schedule schedule = Schedule.getInstance();
     private Project project; //also redundant
-    private Login login = new Login(); //redundant
+    private LoginController loginController = new LoginController(); //redundant
     private String projectLeaderName;
     private ArrayList<Activity> activities;
     private int projectID;

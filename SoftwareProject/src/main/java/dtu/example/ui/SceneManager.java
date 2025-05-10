@@ -15,7 +15,7 @@ public class SceneManager {
     private Scene loginScene, mainScene;
 
     //Saving a ref for this so it can be manipulated.
-    private LoginController loginController;
+    private LoginScreenController loginScreenController;
 
     private MainScreenController mainScreenController;
 
@@ -55,11 +55,13 @@ public class SceneManager {
         try {
             FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
             loginScene = new Scene(loginLoader.load());
-            loginController = loginLoader.getController();
+            loginScreenController = loginLoader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
     //For now I *might* just end up loading this on launch, but we want to load this and everything else AFTER the login has been passed.
     //Otherwise, how would we know which users data to put in the following screens?
@@ -79,7 +81,7 @@ public class SceneManager {
     //This is also why we would want to wipe the scenes once someone logs out, as it otherwise could be bypassed in order to view another users data.
     //(These things might not be needed at all, but i want to mention them regardless)
     public void swapToLoginScreen() {
-        loginController.resetPasswordField();
+        loginScreenController.resetPasswordField();
         stage.setScene(loginScene);
     }
 

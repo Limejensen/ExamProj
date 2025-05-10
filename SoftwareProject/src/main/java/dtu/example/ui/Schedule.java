@@ -26,6 +26,8 @@ public class Schedule {
         changeRespondsText("added", project.getProjectName());
     }
 
+
+    //Given the current use of this, why does it even return a project rather than just try to add it?
     public Project createProject(String projectName) {
         int projectID = (Year.now().getValue()-2000)*1000 + projectIterator;
         projectIterator++;
