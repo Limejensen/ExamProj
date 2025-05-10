@@ -36,6 +36,9 @@ public class CreateProjectScreenController extends SubpageController {
             try {
                 //ADD LOGIC HERE TO ACTUALLY ADD IT
                 Schedule.getInstance().createProject(projectNameField.getText());
+
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

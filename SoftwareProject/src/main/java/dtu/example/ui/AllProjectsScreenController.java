@@ -20,4 +20,11 @@ public class AllProjectsScreenController extends SubpageController {
     public void createNewProjectButton(MouseEvent click) {
         mainScreenController.swapToCreateNewProjectScreen();
     }
+
+    public void addNewProjectTile(Project project) {
+        //Generate another tile from fxml template
+        //Link it to the specific project
+        //Clickable, opens menu for editting project
+        //Saves and sets new values once the project is closed.
+    }
 }
